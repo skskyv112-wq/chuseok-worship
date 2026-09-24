@@ -1,0 +1,1012 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: #f7f1e6;
+    color: #40362c;
+
+    font-family:
+        "Malgun Gothic",
+        "Noto Sans KR",
+        sans-serif;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   첫 화면
+========================================= */
+
+.hero {
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            150deg,
+            #554536,
+            #2c2927
+        );
+}
+
+
+.moon {
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    top: 10%;
+    right: 12%;
+
+    border-radius: 50%;
+
+    background: #fff0bd;
+
+    box-shadow:
+        0 0 70px rgba(255, 224, 151, 0.4);
+
+    opacity: 0.9;
+}
+
+
+.moon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    top: -25px;
+    left: 45px;
+
+    border-radius: 50%;
+
+    background: #332f2b;
+}
+
+
+.hero-content {
+    position: relative;
+
+    z-index: 2;
+
+    padding: 30px;
+
+    animation: heroAppear 1s ease;
+}
+
+
+.season {
+    font-size: 15px;
+
+    letter-spacing: 7px;
+
+    margin-bottom: 20px;
+
+    color: #ead5a6;
+}
+
+
+.hero h1 {
+    font-family: Georgia, serif;
+
+    font-size: clamp(50px, 8vw, 88px);
+
+    line-height: 1.2;
+
+    margin-bottom: 30px;
+}
+
+
+.gold-line {
+    width: 70px;
+    height: 1px;
+
+    margin: 0 auto 30px;
+
+    background: #d9b36b;
+}
+
+
+.theme {
+    font-family: Georgia, serif;
+
+    font-size: clamp(20px, 3vw, 30px);
+
+    line-height: 1.8;
+}
+
+
+.verse {
+    margin-top: 10px;
+
+    color: #dfc796;
+}
+
+
+.main-button {
+    margin-top: 40px;
+
+    padding: 14px 40px;
+
+    border: 1px solid #e2bf79;
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+.main-button:hover {
+    background: #c9994d;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   메인
+========================================= */
+
+main {
+    width: min(1000px, 92%);
+
+    margin: auto;
+
+    padding: 90px 0;
+}
+
+
+/* =========================================
+   예배 순서
+========================================= */
+
+.order-section {
+    text-align: center;
+
+    margin-bottom: 80px;
+}
+
+
+.section-label {
+    color: #a97b40;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 8px;
+}
+
+
+.order-section h2 {
+    font-family: Georgia, serif;
+
+    font-size: 38px;
+
+    margin-bottom: 5px;
+}
+
+
+.description {
+    color: #817568;
+
+    margin-bottom: 35px;
+}
+
+
+.order-list {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+
+.order-button {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    width: 100%;
+
+    padding: 18px;
+
+    border: 1px solid #dfd1bc;
+
+    border-radius: 12px;
+
+    background: #fffdf9;
+
+    color: #4c4136;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+
+.order-button:hover {
+    background: #f0e1c9;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(70,50,30,0.08);
+}
+
+
+.order-button:active {
+    transform: scale(0.98);
+}
+
+
+.order-button span {
+    color: #b28245;
+
+    font-weight: bold;
+
+    min-width: 25px;
+}
+
+
+/* =========================================
+   카드
+========================================= */
+
+.card {
+    background: #fffdf9;
+
+    border: 1px solid #eadfce;
+
+    border-radius: 20px;
+
+    padding: 55px;
+
+    margin-bottom: 35px;
+
+    box-shadow:
+        0 12px 35px rgba(70,50,30,0.07);
+
+    scroll-margin-top: 25px;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+
+.card.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+.card h2 {
+    font-family: Georgia, serif;
+
+    font-size: 34px;
+
+    margin-bottom: 25px;
+}
+
+
+.number {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ead7b5;
+
+    color: #76572f;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   예배 전 안내
+========================================= */
+
+.content {
+    font-size: 17px;
+}
+
+
+.highlight {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 30px;
+
+    padding: 22px;
+
+    border-left: 4px solid #c29350;
+
+    border-radius: 10px;
+
+    background: #f5ead8;
+}
+
+
+.heart {
+    font-size: 28px;
+
+    color: #b17b3d;
+}
+
+
+/* =========================================
+   찬송
+========================================= */
+
+.song-card {
+    text-align: center;
+}
+
+
+.song-description,
+.song-number {
+    color: #806b53;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   음악
+========================================= */
+
+.music-box {
+    padding: 25px;
+
+    border-radius: 15px;
+
+    background: #f3e8d8;
+}
+
+
+.music-heading {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.music-symbol {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #b78646;
+
+    color: white;
+
+    font-size: 24px;
+}
+
+
+.music-heading div:last-child {
+    display: flex;
+
+    flex-direction: column;
+
+    text-align: left;
+}
+
+
+.music-heading small {
+    color: #857565;
+
+    font-size: 13px;
+}
+
+
+audio {
+    display: block;
+
+    width: 100%;
+
+    height: 50px;
+}
+
+
+.audio-error {
+    min-height: 20px;
+
+    margin-top: 10px;
+
+    color: #a24d3b;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   악보
+========================================= */
+
+.score-box {
+    margin-top: 30px;
+
+    padding: 30px 10px;
+
+    border-radius: 15px;
+
+    background: #faf5ec;
+
+    overflow: hidden;
+}
+
+
+.score-box h3 {
+    margin-bottom: 25px;
+
+    font-size: 22px;
+}
+
+
+.score-box img {
+    display: block;
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    height: auto;
+
+    margin: 0 auto;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,0.12);
+}
+
+
+/* =========================================
+   기도
+========================================= */
+
+.prayer-box {
+    padding: 35px;
+
+    border-radius: 15px;
+
+    background: #f8f0e4;
+
+    font-family: Georgia, serif;
+
+    font-size: 17px;
+}
+
+
+.prayer-box p {
+    margin-bottom: 20px;
+}
+
+
+.prayer-box .amen {
+    margin-bottom: 0;
+
+    text-align: center;
+
+    color: #a7773d;
+
+    font-weight: bold;
+
+    font-size: 20px;
+}
+
+
+/* =========================================
+   성경
+========================================= */
+
+.bible-card {
+    text-align: center;
+}
+
+
+.bible-box {
+    padding: 45px 20px;
+
+    border-radius: 15px;
+
+    background: #f4e8d3;
+}
+
+
+.cross {
+    margin-bottom: 10px;
+
+    color: #a6793f;
+
+    font-size: 42px;
+}
+
+
+.bible-box h3 {
+    font-family: Georgia, serif;
+
+    font-size: 28px;
+
+    margin-bottom: 8px;
+}
+
+
+.bible-text {
+    margin-top: 30px;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    background: #fffaf2;
+
+    text-align: left;
+
+    font-family:
+        Georgia,
+        "Malgun Gothic",
+        serif;
+
+    font-size: 18px;
+
+    line-height: 2;
+}
+
+
+.bible-text p {
+    margin-bottom: 25px;
+}
+
+
+.bible-text p:last-child {
+    margin-bottom: 0;
+}
+
+
+.bible-text strong {
+    display: inline-block;
+
+    margin-right: 8px;
+
+    color: #a4773d;
+
+    font-size: 15px;
+}
+
+
+.brown-button {
+    margin-top: 25px;
+
+    padding: 12px 25px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #80623c;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.brown-button:hover {
+    background: #62482c;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   설교
+========================================= */
+
+.sermon-box {
+    padding: 65px 25px;
+
+    border: 1px dashed #d8c5aa;
+
+    border-radius: 15px;
+
+    background: #faf6ef;
+
+    text-align: center;
+}
+
+
+.sermon-box h3 {
+    font-size: 23px;
+}
+
+
+.sermon-line {
+    width: 50px;
+    height: 1px;
+
+    margin: 25px auto;
+
+    background: #c29959;
+}
+
+
+.sermon-theme {
+    font-family: Georgia, serif;
+
+    font-size: 20px;
+}
+
+
+.sermon-verse {
+    margin-top: 8px;
+
+    color: #a47b46;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   감사 나눔
+========================================= */
+
+.sharing-text {
+    font-family: Georgia, serif;
+
+    font-size: 17px;
+
+    margin-bottom: 30px;
+}
+
+
+.sharing-text p {
+    margin-bottom: 18px;
+}
+
+
+.questions {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+.question {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    background: #f5ead9;
+}
+
+
+.question > span {
+    flex-shrink: 0;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #b48448;
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+.question strong {
+    display: block;
+
+    margin-bottom: 3px;
+}
+
+
+.question p {
+    color: #84766a;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   주기도문
+========================================= */
+
+.lord-prayer {
+    text-align: center;
+}
+
+
+.lord-prayer-box {
+    padding: 40px 30px;
+
+    border-radius: 15px;
+
+    background: #f5e9d5;
+
+    font-family: Georgia, serif;
+
+    font-size: 18px;
+}
+
+
+.lord-prayer-box p {
+    margin-bottom: 22px;
+}
+
+
+.lord-prayer-box .amen {
+    margin-top: 30px;
+
+    margin-bottom: 0;
+
+    color: #a7773d;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   Footer
+========================================= */
+
+footer {
+    padding: 70px 20px;
+
+    text-align: center;
+
+    background: #38312b;
+
+    color: #f1e6d4;
+}
+
+
+.footer-cross {
+    color: #d1aa68;
+
+    font-size: 35px;
+
+    margin-bottom: 15px;
+}
+
+
+footer h2 {
+    font-family: Georgia, serif;
+
+    font-size: 25px;
+}
+
+
+footer > p {
+    color: #dec79e;
+
+    font-size: 18px;
+}
+
+
+footer span {
+    color: #a89b8b;
+
+    font-size: 14px;
+}
+
+
+.footer-line {
+    width: 50px;
+    height: 1px;
+
+    margin: 25px auto;
+
+    background: #b18b54;
+}
+
+
+footer small {
+    color: #999084;
+}
+
+
+/* =========================================
+   애니메이션
+========================================= */
+
+@keyframes heroAppear {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================
+   모바일
+========================================= */
+
+@media (max-width: 700px) {
+
+    .moon {
+        width: 150px;
+        height: 150px;
+
+        right: 3%;
+    }
+
+
+    .moon::after {
+        width: 170px;
+        height: 170px;
+    }
+
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+
+    .theme {
+        font-size: 19px;
+    }
+
+
+    main {
+        width: 94%;
+
+        padding: 55px 0;
+    }
+
+
+    .order-list {
+        grid-template-columns: 1fr;
+    }
+
+
+    .card {
+        padding: 35px 22px;
+    }
+
+
+    .card h2 {
+        font-size: 29px;
+    }
+
+
+    .prayer-box,
+    .lord-prayer-box {
+        padding: 25px 20px;
+
+        font-size: 16px;
+    }
+
+
+    .bible-box {
+        padding: 30px 15px;
+    }
+
+
+    .bible-box h3 {
+        font-size: 23px;
+    }
+
+
+    .bible-text {
+        padding: 20px;
+
+        font-size: 16px;
+
+        line-height: 1.9;
+    }
+
+
+    .question {
+        align-items: flex-start;
+    }
+
+
+    .score-box {
+        padding: 15px 3px;
+    }
+
+
+    .score-box img {
+        width: 100%;
+    }
+
+}
